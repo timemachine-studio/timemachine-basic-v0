@@ -17,21 +17,24 @@ export default function ChatInputAnimated({
   isLoading,
 }: ChatInputAnimatedProps) {
   const historyPlaceholders = [
-    "Ask about Ancient Egypt...",
-    "Tell me about the Renaissance...",
-    "What happened during World War II?",
-    "Write a poem about time travel...",
-    "Explain the theory of relativity...",
-    "Who was Leonardo da Vinci?",
-    "What was life like in medieval times?",
-    "Tell me about the Roman Empire...",
+    "Explain me rocket science...",
+    "Let's possibly cure cancer...",
+    "Will AI rule the world one day?",
+    "We support Palestine!",
+    "Are you better than ChatGPT?...",
+    "How to look good in photos",
+    "How to study night before exam?",
+    "Explore the timeline and universe...",
   ]
 
+  // Wrap the handleSubmit to prevent auto-scrolling
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    // Call the original handleSubmit without triggering auto-scroll
+    handleSubmit(e)
+  }
+
   return (
-    <PlaceholdersAndVanishInput
-      placeholders={historyPlaceholders}
-      onChange={handleInputChange}
-      onSubmit={handleSubmit}
-    />
+    <PlaceholdersAndVanishInput placeholders={historyPlaceholders} onChange={handleInputChange} onSubmit={onSubmit} />
   )
 }
