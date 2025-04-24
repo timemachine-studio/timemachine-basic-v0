@@ -4,24 +4,24 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
     --primary: 270 70% 50%;
     --primary-foreground: 0 0% 100%;
     --secondary: 180 70% 50%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
     --ring: 270 70% 50%;
     --radius: 1rem;
   }
@@ -44,7 +44,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(30, 30, 30, 0.5);
   backdrop-filter: blur(10px);
 }
 
@@ -60,34 +60,6 @@
 /* Smooth transitions */
 * {
   transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-/* Blob animations */
-@keyframes blob {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-}
-
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
 }
 
 /* Apple-style typography */
@@ -115,4 +87,41 @@
 
 .message-animation {
   animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Ensure all text in dark mode is properly visible */
+.prose-invert {
+  --tw-prose-body: #ffffff;
+  --tw-prose-headings: #ffffff;
+  --tw-prose-lead: #ffffff;
+  --tw-prose-links: #ffffff;
+  --tw-prose-bold: #ffffff;
+  --tw-prose-counters: #ffffff;
+  --tw-prose-bullets: #ffffff;
+  --tw-prose-hr: theme("colors.gray.700");
+  --tw-prose-quotes: #ffffff;
+  --tw-prose-quote-borders: theme("colors.gray.700");
+  --tw-prose-captions: #ffffff;
+  --tw-prose-code: #ffffff;
+  --tw-prose-pre-code: #ffffff;
+  --tw-prose-pre-bg: theme("colors.gray.800");
+  --tw-prose-th-borders: theme("colors.gray.700");
+  --tw-prose-td-borders: theme("colors.gray.700");
+}
+
+/* Force white text for AI responses */
+.prose-invert p,
+.prose-invert li,
+.prose-invert h1,
+.prose-invert h2,
+.prose-invert h3,
+.prose-invert h4,
+.prose-invert h5,
+.prose-invert h6,
+.prose-invert strong,
+.prose-invert em,
+.prose-invert blockquote,
+.prose-invert a,
+.prose-invert code:not(pre code) {
+  color: #ffffff !important;
 }

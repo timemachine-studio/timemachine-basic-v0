@@ -6,6 +6,7 @@ import ChatHeader from "@/components/chat-header"
 import ChatMessage from "@/components/chat-message"
 import ChatInputAnimated from "@/components/chat-input-animated"
 import TypingIndicator from "@/components/typing-indicator"
+import { motion } from "framer-motion"
 
 export default function Home() {
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
@@ -65,11 +66,51 @@ export default function Home() {
   if (!mounted) return null
 
   return (
-    <main className="flex flex-col h-screen bg-white relative overflow-hidden">
-      {/* Colorful glows */}
-      <div className="absolute -top-40 -left-40 w-80 h-80 bg-purple-400 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
-      <div className="absolute top-0 -right-40 w-80 h-80 bg-cyan-400 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
-      <div className="absolute -bottom-40 left-20 w-80 h-80 bg-pink-400 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-4000"></div>
+    <main className="flex flex-col h-screen bg-black relative overflow-hidden">
+      {/* Animated colorful glows using framer-motion with full screen coverage */}
+      <motion.div
+        className="absolute w-[600px] h-[600px] bg-purple-600 rounded-full mix-blend-screen filter blur-[128px] opacity-20"
+        animate={{
+          x: ["-30%", "100%", "70%", "-50%", "-30%"],
+          y: ["-30%", "20%", "100%", "50%", "-30%"],
+        }}
+        transition={{
+          duration: 60,
+          repeat: Number.POSITIVE_INFINITY,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      />
+
+      <motion.div
+        className="absolute w-[600px] h-[600px] bg-cyan-600 rounded-full mix-blend-screen filter blur-[128px] opacity-20"
+        animate={{
+          x: ["100%", "0%", "-70%", "30%", "100%"],
+          y: ["0%", "80%", "30%", "-50%", "0%"],
+        }}
+        transition={{
+          duration: 60,
+          repeat: Number.POSITIVE_INFINITY,
+          repeatType: "mirror",
+          ease: "easeInOut",
+          delay: 10,
+        }}
+      />
+
+      <motion.div
+        className="absolute w-[600px] h-[600px] bg-pink-600 rounded-full mix-blend-screen filter blur-[128px] opacity-20"
+        animate={{
+          x: ["50%", "-70%", "-20%", "80%", "50%"],
+          y: ["80%", "40%", "-40%", "10%", "80%"],
+        }}
+        transition={{
+          duration: 60,
+          repeat: Number.POSITIVE_INFINITY,
+          repeatType: "mirror",
+          ease: "easeInOut",
+          delay: 20,
+        }}
+      />
 
       <ChatHeader />
 
@@ -91,7 +132,7 @@ export default function Home() {
       {/* Floating input with glassmorphism effect */}
       <div className="fixed bottom-6 left-0 right-0 px-4 z-20">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-white/40 backdrop-blur-md rounded-full shadow-sm border border-white/20 p-1">
+          <div className="bg-gray-900/60 backdrop-blur-md rounded-full shadow-sm border border-gray-700/30 p-1">
             <ChatInputAnimated
               input={input}
               handleInputChange={handleInputChange}

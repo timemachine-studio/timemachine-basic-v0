@@ -62,8 +62,8 @@
     "@ai-sdk/groq": "latest",
     "ai": "latest",
     "tailwind-config": "latest",
-    "react-markdown": "latest",
-    "framer-motion": "latest"
+    "framer-motion": "latest",
+    "react-markdown": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",

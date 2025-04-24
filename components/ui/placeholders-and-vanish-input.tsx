@@ -168,7 +168,7 @@ export function PlaceholdersAndVanishInput({
     <form className="relative w-full max-w-xl mx-auto" onSubmit={handleSubmit}>
       <canvas
         className={cn(
-          "absolute pointer-events-none text-base transform scale-50 top-[20%] left-2 sm:left-8 origin-top-left filter invert dark:invert-0 pr-20",
+          "absolute pointer-events-none text-base transform scale-50 top-[20%] left-2 sm:left-8 origin-top-left pr-20",
           !animating ? "opacity-0" : "opacity-100",
         )}
         ref={canvasRef}
@@ -185,15 +185,16 @@ export function PlaceholdersAndVanishInput({
         value={value}
         type="text"
         className={cn(
-          "w-full text-sm sm:text-base z-10 border-none bg-transparent text-black h-12 focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-16",
+          "w-full text-base z-10 border-none bg-transparent text-white h-12 focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-16",
           animating && "text-transparent",
         )}
+        style={{ fontSize: "16px" }} // Prevent zoom on iPhone
       />
 
       <button
         disabled={!value}
         type="submit"
-        className="absolute right-2 top-1/2 z-20 -translate-y-1/2 h-8 w-8 rounded-full bg-black disabled:opacity-50 transition duration-200 flex items-center justify-center"
+        className="absolute right-2 top-1/2 z-20 -translate-y-1/2 h-8 w-8 rounded-full bg-white disabled:opacity-50 transition duration-200 flex items-center justify-center"
       >
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"
@@ -205,7 +206,7 @@ export function PlaceholdersAndVanishInput({
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-white h-4 w-4"
+          className="text-black h-4 w-4"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <motion.path
@@ -248,7 +249,7 @@ export function PlaceholdersAndVanishInput({
                 duration: 0.3,
                 ease: "linear",
               }}
-              className="text-sm sm:text-base font-normal text-neutral-500 pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
+              className="text-base font-normal text-gray-400 pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
             >
               {placeholders[currentPlaceholder]}
             </motion.p>
